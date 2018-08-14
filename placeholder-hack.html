@@ -1,40 +1,34 @@
 // thanks dmaynard
 
-<div class="input-placeholder">
-	<label class="placeholder">Search by shop name or number</label>
-	<input type="text" class="search">
-</div>
-
 <style>
-	.input-placeholder {
-		position: relative;
-	}
-	
-	.input-placeholder .placeholder {
-		position: absolute;
-		top: 0;
-		left: 0;
-		/* set padding equal to padding of the input */
-	}
-	
-	.input-placeholder input {
-		position: relative;
-	}
+    .input-placeholder {
+        position: relative;
+    }
+    .input-placeholder .placeholder-text {
+        position: absolute;
+        top: 27px;
+        left: 15px;
+        font-size: 20px;
+        color: gray;
+    }
 </style>
 
+<div class="input-placeholder">
+    <label class="placeholder-text">John Doe</label>
+    <asp:TextBox runat="server" CssClass="gold-input" id="shopOwnerName" name="aseOwnerName" /><br />
+</div>
+
 <script>
-	$('.input-placeholder .placeholder').on('click touch', function() {
-		$(this).hide();
-		$(this).siblings('input').focus();
-	});
-	
-	$('.input-placeholder input').on('focus', function() {
-		$(this).siblings('.placeholder').hide();
-	});
-	
-	$('.input-placeholder input').on('blur', function() {
-		if ($(this).val() == '') {
-			$(this).siblings('.placeholder').show();
-		}
-	});
+    $('.input-placeholder .placeholder-text').click(function() {
+            $(this).hide();
+            $(this).siblings('input').focus();
+    });
+    $('.input-placeholder input').focus(function () {
+        $(this).siblings('.placeholder-text').hide();
+    });
+    $('.input-placeholder input').blur(function () {
+        if ($(this).val() == '') {
+            $(this).siblings('.placeholder-text').show();
+        }
+    });
 </script>
